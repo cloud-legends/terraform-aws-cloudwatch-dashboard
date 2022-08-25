@@ -8,7 +8,7 @@ locals {
         properties = {
           title  = "[ECS] CPU/Memory (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {
@@ -29,7 +29,7 @@ locals {
         properties = {
           title  = "[ECS] CPU Utilization per service (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {
@@ -58,7 +58,7 @@ locals {
         properties = {
           title  = "[ECS] Memory Utilization per service (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {

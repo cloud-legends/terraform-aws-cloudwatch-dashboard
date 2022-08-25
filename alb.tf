@@ -8,7 +8,7 @@ locals {
         properties = {
           title  = "[ALB] Request counts (alb: ${coalesce(alb.label, alb.name)})"
           view   = "timeSeries"
-          region = coalesce(alb.region, var.default_region)
+          region = coalesce(alb.region, local.default_region)
           stat   = "Sum"
 
           yAxis = {
@@ -37,7 +37,7 @@ locals {
         properties = {
           title  = "[ALB] 5XX Error Rates (alb: ${coalesce(alb.label, alb.name)})"
           view   = "timeSeries"
-          region = coalesce(alb.region, var.default_region)
+          region = coalesce(alb.region, local.default_region)
 
           yAxis = {
             left = {
@@ -84,7 +84,7 @@ locals {
         properties = {
           title  = "[ALB] Response time (alb: ${coalesce(alb.label, alb.name)})"
           view   = "timeSeries"
-          region = coalesce(alb.region, var.default_region)
+          region = coalesce(alb.region, local.default_region)
 
           yAxis = {
             left = {

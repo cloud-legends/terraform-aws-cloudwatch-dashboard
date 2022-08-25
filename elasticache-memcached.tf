@@ -46,7 +46,7 @@ locals {
         properties = {
           title  = "[ElastiCache] Connections & CPU (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {
@@ -83,7 +83,7 @@ locals {
         properties = {
           title  = "[ElastiCache] Memory & Cache Performance (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {
@@ -149,7 +149,7 @@ locals {
         properties = {
           title  = "[ElastiCache] Commands (cluster: ${coalesce(cluster.label, cluster.name)})"
           view   = "timeSeries"
-          region = coalesce(cluster.region, var.default_region)
+          region = coalesce(cluster.region, local.default_region)
 
           yAxis = {
             left = {

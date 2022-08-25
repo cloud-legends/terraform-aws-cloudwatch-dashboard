@@ -17,8 +17,9 @@ variable "widget_width" {
 }
 
 variable "default_region" {
-  description = "Region used when no region is provided for a service"
+  description = "Region used when no region is provided for a service. Defaults to current region."
   type        = string
+  default     = null
 }
 
 variable "application_load_balancers" {

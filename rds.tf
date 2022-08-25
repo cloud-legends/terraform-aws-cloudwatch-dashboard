@@ -8,7 +8,7 @@ locals {
         properties = {
           title  = "[RDS] CPU & Connections (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(instance.region, var.default_region)
+          region = coalesce(instance.region, local.default_region)
 
           yAxis = {
             left = {
@@ -41,7 +41,7 @@ locals {
         properties = {
           title  = "[RDS] Latency (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(instance.region, var.default_region)
+          region = coalesce(instance.region, local.default_region)
 
           yAxis = {
             left = {
@@ -61,7 +61,7 @@ locals {
         properties = {
           title  = "[RDS] IOPS and Throughput (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(instance.region, var.default_region)
+          region = coalesce(instance.region, local.default_region)
 
           yAxis = {
             left = {
