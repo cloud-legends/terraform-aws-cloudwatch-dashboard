@@ -86,6 +86,19 @@ variable "rds_instances" {
   )
 }
 
+variable "rds_aurora_clusters" {
+  description = "RDS Aurora clusters shown on dashboard"
+  default     = []
+
+  type = list(
+    object({
+      name   = string
+      region = optional(string)
+      label  = optional(string)
+    })
+  )
+}
+
 variable "elasticache_redis_clusters" {
   description = "ElastiCache Redis clusters shown on dashboard"
   default     = []

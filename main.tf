@@ -6,6 +6,7 @@ locals {
     local.alb_widgets,
     local.ecs_widgets,
     local.rds_widgets,
+    local.rds_aurora_widgets,
     local.elasticache_redis_widgets,
     local.elasticache_memcached_widgets,
     local.opensearch_widgets
