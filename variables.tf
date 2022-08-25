@@ -73,8 +73,8 @@ variable "ecs_clusters" {
   )
 }
 
-variable "rds_databases" {
-  description = "RDS databases shown on dashboards"
+variable "rds_instances" {
+  description = "RDS databases shown on dashboard"
   default     = []
 
   type = list(

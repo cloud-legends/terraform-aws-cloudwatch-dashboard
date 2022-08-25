@@ -1,14 +1,14 @@
 locals {
   rds_widgets = concat([], [
-    for database in var.rds_databases :
+    for instance in var.rds_instances :
     [
       {
         type = "metric"
 
         properties = {
-          title  = "[RDS] CPU & Connections (database: ${coalesce(database.label, database.name)})"
+          title  = "[RDS] CPU & Connections (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(database.region, var.default_region)
+          region = coalesce(instance.region, var.default_region)
 
           yAxis = {
             left = {
@@ -22,14 +22,14 @@ locals {
               "AWS/RDS",
               "CPUUtilization",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "left" }
             ],
             [
               "AWS/RDS",
               "DatabaseConnections",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "right" }
             ]
           ]
@@ -39,9 +39,9 @@ locals {
         type = "metric"
 
         properties = {
-          title  = "[RDS] Latency (database: ${coalesce(database.label, database.name)})"
+          title  = "[RDS] Latency (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(database.region, var.default_region)
+          region = coalesce(instance.region, var.default_region)
 
           yAxis = {
             left = {
@@ -50,8 +50,8 @@ locals {
           }
 
           metrics = [
-            ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", database.name],
-            ["AWS/RDS", "WriteLatency", "DBInstanceIdentifier", database.name]
+            ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", instance.name],
+            ["AWS/RDS", "WriteLatency", "DBInstanceIdentifier", instance.name]
           ]
         }
       },
@@ -59,9 +59,9 @@ locals {
         type = "metric"
 
         properties = {
-          title  = "[RDS] IOPS and Throughput (database: ${coalesce(database.label, database.name)})"
+          title  = "[RDS] IOPS and Throughput (instance: ${coalesce(instance.label, instance.name)})"
           view   = "timeSeries"
-          region = coalesce(database.region, var.default_region)
+          region = coalesce(instance.region, var.default_region)
 
           yAxis = {
             left = {
@@ -78,28 +78,28 @@ locals {
               "AWS/RDS",
               "ReadIOPS",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "left" }
             ],
             [
               "AWS/RDS",
               "WriteIOPS",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "left" }
             ],
             [
               "AWS/RDS",
               "ReadThroughput",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "right" }
             ],
             [
               "AWS/RDS",
               "WriteThroughput",
               "DBInstanceIdentifier",
-              database.name,
+              instance.name,
               { yAxis = "right" }
             ]
           ]
